@@ -15,11 +15,12 @@ def renameFile(path,mode,difficulty):
     if not os.path.exists(path):
         return -1
     for name in os.listdir(path):
+        rawName, ext = os.path.splitext(name)
         curPath = os.path.join(path, name)
         print("Current Path: " + curPath)
         question = getNewName(name,mode,difficulty)
-        newName = os.path.join(path,question)
-        print("New Path: " + newName)
+        newName = os.path.join(path,question + ext)
+        print("New Path: " + newName + ext)
 
         if os.path.isdir(curPath):
             print("It is a directory")
