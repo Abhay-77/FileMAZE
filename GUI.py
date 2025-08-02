@@ -75,7 +75,7 @@ class MyWidget(QtWidgets.QWidget):
         self.themeLabel.setStyleSheet("font-size: 16px;")
         self.ThemeHLayout.addWidget(self.themeLabel)
         self.themeComboBox = QtWidgets.QComboBox(self)
-        self.themeComboBox.addItems(["Default", "Shakespeare Mode", "Pirate Mode"])
+        self.themeComboBox.addItems(["Default", "Shakespeare Mode", "Pirate Mode","Anime Mode"])
         self.themeComboBox.setStyleSheet("""
           QComboBox {
               background-color: #f0f0f0;  
