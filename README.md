@@ -12,7 +12,7 @@
 - Member 2: Abhay Murali M - Model Engineering College
 
 ### Project Description
-FileMAZE is a completely useless file renamer that transforms your directory into a confusing, riddle-filled labyrinth. Every file and folder is renamed into a trivia question, absurd riddle, or anime-level nonsense — and it just keeps getting worse.
+FileMAZE is a completely useless file renamer that transforms your directory into a confusing, riddle-filled labyrinth. Every file and folder is renamed into a trivia question, absurd riddle, or anime-level nonsense - and it just keeps getting worse.
 
 ### The Problem (that doesn't exist)
 Navigating your files is too easy, too predictable. Why find resume.docx in 2 seconds when you could embark on an existential trivia quest?
@@ -27,7 +27,7 @@ For Software:
 - Frameworks: PySide6 (for GUI)
 - Libraries:
     - pyinstaller for app packaging
-    - os, shutil, uuid, threading, etc. for file chaos
+    - os, threading, etc. for file chaos
     - Gemini API for question generation
 - Tools:
     - Gemini API
@@ -55,16 +55,20 @@ For Software:
 
 # Screenshots (Add at least 3)
 ![Screenshot1](./assets/before.png)
+
 *Original folder structure before the chaos begins - neat, organized, and boring.*
 
 ![Screenshot2](./assets/app.png)
+
 *The FileMAZE UI: Select a folder, choose your theme and difficulty level, then unleash confusion.*
 
 ![Screenshot3](./assets/after.png)
+
 *After entering the maze: files renamed into riddles and trivia questions - good luck finding your stuff.*
 
 # Diagrams
-![Workflow](./assets/diagram.png)
+![Workflow](./assets/diagram.jpg)
+
 *Workflow of FileMAZE: User selects a folder → Chooses theme → AI renames recursively → UI displays taunts.Final build of the application with the interactive GUI ready to prank your files.*
 
 ### Project Demo
