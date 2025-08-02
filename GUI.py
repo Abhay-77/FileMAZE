@@ -8,6 +8,8 @@ from PySide6.QtWidgets import (
 from PySide6.QtGui import QIcon
 from PySide6.QtCore import Qt
 import time
+from rename import renameFile
+
 class MyWidget(QtWidgets.QWidget):
     def __init__(self):
         super().__init__()
@@ -21,7 +23,7 @@ class MyWidget(QtWidgets.QWidget):
         self.headingLabel = QtWidgets.QLabel("Welcome to FileMAZE!", self)
         self.HLayoutHeading.addWidget(self.headingLabel)
         self.headingLabel.setAlignment(QtCore.Qt.AlignCenter)
-        self.headingLabel.setStyleSheet("font-size: 26px; font-weight: bold; color: yellow;")
+        self.headingLabel.setStyleSheet("font-size: 26px; font-weight: bold; color: blue;")
         self.VLayout.addLayout(self.HLayoutHeading)
 
         self.HLayout = QtWidgets.QHBoxLayout(self)
@@ -126,6 +128,7 @@ class MyWidget(QtWidgets.QWidget):
         self.VLayout.addLayout(radioLayout)
 
         self.submitButton = QtWidgets.QPushButton("Submit", self)
+        self.submitButton.clicked.connect(self.onSubmitClick)
         self.submitButton.setStyleSheet("""
           QPushButton {
               background-color: #28a745;     /* green background */
@@ -141,6 +144,10 @@ class MyWidget(QtWidgets.QWidget):
           }
         """)
         self.VLayout.addWidget(self.submitButton)
+
+    def onSubmitClick(self):
+        t = renameFile(self.lineEdit.text())
+        # if t == -1:
 
     @QtCore.Slot()
     def browse_folder(self):

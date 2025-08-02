@@ -12,6 +12,8 @@ def clean_filename(name):
     return re.sub(r'[\\/*?:"<>|]', "", name).strip()
 
 def renameFile(path):
+    if not os.path.exists(path):
+        return -1
     for name in os.listdir(path):
         curPath = os.path.join(path, name)
         print("Current Path: " + curPath)
