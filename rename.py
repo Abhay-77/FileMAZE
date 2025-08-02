@@ -11,28 +11,29 @@ client = genai.Client(api_key=os.getenv("GEMINI_API_KEY_PROJECT"))
 def clean_filename(name):
     return re.sub(r'[\\/*?:"<>|]', "", name).strip()
 
-def renameFile(path):
+def renameFile(path,mode,difficulty):
     if not os.path.exists(path):
         return -1
     for name in os.listdir(path):
         curPath = os.path.join(path, name)
         print("Current Path: " + curPath)
-        question = getNewName(name)
+        question = getNewName(name,mode,difficulty)
         newName = os.path.join(path,question)
         print("New Path: " + newName)
 
         if os.path.isdir(curPath):
             print("It is a directory")
-            renameFile(curPath)
+            renameFile(curPath,mode,difficulty)
 
         os.rename(curPath, newName)
 
-def getNewName(name):
+def getNewName(name,mode,difficulty):
 
     prompt = """You are a mischievous AI assistant in a chaotic prank app called FileMAZE, where every file is renamed into a mysterious or hilarious challenge. Your job is to take a file or folder name, and convert it into a single-line trivia question which is a hint to the given folder or file name.
 
     Your response must *only be a single line* — a question. Do *not* include any explanations, punctuation beyond the question mark, or extra words. The result must be usable as a *new file or folder name*, so keep it short (ideally under 80 characters) and filename-safe.
 
+    You will be given a theme and difficulty.
     ---
 
     ### Rename Rules:
@@ -52,9 +53,21 @@ def getNewName(name):
 
     ---
 
+    ---
+
+    ### Difficulty levels:
+    - Easy: Random trivia or general riddles.
+    - Medium: Riddles with a poetic or dramatic tone.
+    - Hard: More abstract clues, possibly multi-layered meanings.
+    - Nightmare: Highly challenging poetic riddles, often cryptic or symbolic.
+
+
+    ---
+
     ### Input:
     Original file name: {}  
     Selected Theme: {}
+    Difficulty: {}
 
     ---
 
@@ -73,7 +86,8 @@ def getNewName(name):
 
     response = client.models.generate_content(
         model='gemini-2.0-flash-001',
-        contents= prompt.format(name,"Normal Mode"),
+        contents= prompt.format(name,mode,difficulty),
     )
     
     return clean_filename(response.text)
+

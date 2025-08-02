@@ -146,8 +146,23 @@ class MyWidget(QtWidgets.QWidget):
         self.VLayout.addWidget(self.submitButton)
 
     def onSubmitClick(self):
-        t = renameFile(self.lineEdit.text())
-        # if t == -1:
+        folder_path = self.lineEdit.text()
+        theme = self.themeComboBox.currentText()
+
+        if self.easyRadio.isChecked():
+            difficulty = "Easy"
+        elif self.mediumRadio.isChecked():
+            difficulty = "Medium"
+        elif self.hardRadio.isChecked():
+            difficulty = "Hard"
+        elif self.nightmareRadio.isChecked():
+            difficulty = "Nightmare"
+        else:
+            difficulty = "Easy"
+
+        result = renameFile(folder_path, theme, difficulty)
+        print(f"renameFile returned: {result}")
+
 
     @QtCore.Slot()
     def browse_folder(self):
